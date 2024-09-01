@@ -21,6 +21,12 @@ example run for conversion
 python3 0mhz_dosbox.py --mgls "/mnt/retrodump/retronas/mister/_DOS Games" --dosbox-base "/mnt/retrodump/retronas/mister/games/AO486"
 ```
 
+you can set custom defaults for the generated configurations through the following files. The content of these files are combined into the final configuration if present in the listed order
+```
+0mhz_dosbox/dosbox-x.conf
+0mhz_dosbox/0mhz_dosbox.<Gamename>.conf
+```
+
 will ignore invalid xml, e.g.
 ```
 Invalid XML: Command & Conquer Red Alert.mgl

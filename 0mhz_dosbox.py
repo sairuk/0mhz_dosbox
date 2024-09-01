@@ -9,7 +9,9 @@ import configparser
 import argparse
 from lxml import etree
 
-dosbox_confdir = "0mhz_dosbox"
+app_name = '0mhz_dosbox'
+dosbox_confdir = app_name
+dosbox_confdir_defaults = f"{app_name}.conf"
 
 class DosBox(object):
     def __init__(self):
@@ -52,11 +54,16 @@ class DosBox(object):
 
 def main(args):
     dosbox = DosBox()
-    dosbox.template()
 
     zmhz_path = args.mgls
     dosbox_path = args.dosbox_base
-    
+    conf_dosbox_default_conf = os.path.join(dosbox_confdir_defaults,"dosbox-x.conf")
+
+    # read the default config
+    if os.path.exists(conf_dosbox_default_conf):
+        print(f"Reading: {conf_dosbox_default_conf}")
+        dosbox.conf.read(conf_dosbox_default_conf)
+
     if not os.path.exists(zmhz_path):
         print(f"Failed to find input folder: {zmhz_path}", file=sys.stderr)
         exit(1)
@@ -71,7 +78,15 @@ def main(args):
             bootlook = True
             autoexec_cmd = ""
             abs_path = os.path.join(root, filename)
-            conf_dosbox = os.path.join(dosbox_confdir,os.path.splitext(filename)[0] + ".conf")
+            basename = os.path.splitext(filename)[0]
+            conf_dosbox = os.path.join(dosbox_confdir,f"{basename}.conf")
+            conf_dosbox_default_game = os.path.join(dosbox_confdir_defaults,f"{app_name}_{basename}.conf")
+
+            if os.path.exists(conf_dosbox_default_game):
+                print(f"Reading: {conf_dosbox_default_game}")
+                dosbox.conf.read(conf_dosbox_default_game)
+
+            dosbox.template()
 
             try:
                 xml = etree.parse(abs_path)
