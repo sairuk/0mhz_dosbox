@@ -43,6 +43,7 @@ class DosBox(object):
         return None
 
     def template(self):
+        self.conf["dosbox"] = { "quit warning": "false" }
         self.conf["dos"] = { "ver": "7.0" }
         self.conf["autoexec"] = {}
     
@@ -89,6 +90,7 @@ def main(args):
                 if dev_dosbox is None:
                     print(f"Failed to lookup device map for: {filetype} in {filename} ({abs_path})", file=sys.stderr)
                     break
+
                 autoexec.append(f'imgmount {drv} "{dosbox_path}/{file_ao486}" -t {dev_dosbox}')
 
                 if index == "0" or index == "1":
