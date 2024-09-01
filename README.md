@@ -1,6 +1,6 @@
 # 0mhz_dosbox
 
-basic convertor for the 0mhz collection to dosbox-x, requires dosbox-x atm for vhd geometry support and dosbox reported version must be at least 7.0
+basic converter for the 0mhz collection to dosbox-x, requires dosbox-x atm for vhd geometry support and dosbox reported version must be at least 7.0
 
 dosbox didn't like device indexes for cdroms so the below is true
 `index`
@@ -53,7 +53,7 @@ ver = 7.0
 [autoexec]
 
 imgmount c "/mnt/retrodump/retronas/mister/games/AO486/media/discworld/discworld.vhd" -t hdd
-imgmount d "/mnt/retrodump/retronas/mister/games/AO486/media/discworld/discworld.chd" -t iso
+imgmount e "/mnt/retrodump/retronas/mister/games/AO486/media/discworld/discworld.chd" -t iso
 boot -l c 
 ```
 
