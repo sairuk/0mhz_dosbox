@@ -103,7 +103,7 @@ def main(args):
                 next
 
             autoexec.append(f'boot -l {boot} \n')
-            autoexec_cmd = '\n'.join(autoexec)
+            autoexec_cmd = f'{os.linesep}'.join(autoexec)
 
             # write config
             with open(conf_dosbox, 'w') as d:

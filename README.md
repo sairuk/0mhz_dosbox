@@ -1,13 +1,24 @@
 # 0mhz_dosbox
 
-basic convertor for the 0mhz collection to dosbox-x
+basic convertor for the 0mhz collection to dosbox-x, requires dosbox-x atm for vhd geometry support and dosbox reported version must be at least 7.0
 
-requires dosbox-x atm for vhd geometry support and dosbox reported version must be at least 7.0
+dosbox didn't like device indexes for cdroms so the below is true
+`index`
+- 0 is `a:`
+- 1 is `b:`
+- 2 is `c:`
+- 4 is `e:`
+- 5 is `f:`
+- 6 is `g:`
 
+assumptions are made about the devices
+- `vhd` is `hdd`
+- `chd` is `iso`
+- `img` is `floppy`
 
 example run for conversion
 ```
-ython3 0mhz_dosbox.py --mgls "/mnt/retrodump/retronas/mister/_DOS Games" --dosbox-base "/mnt/retrodump/retronas/mister/games/AO486"
+python3 0mhz_dosbox.py --mgls "/mnt/retrodump/retronas/mister/_DOS Games" --dosbox-base "/mnt/retrodump/retronas/mister/games/AO486"
 ```
 
 will ignore invalid xml, e.g.
@@ -41,9 +52,9 @@ boot -l c
 ```
 
 Original MisTer `.mgl` contents
-$ cat Discworld.mgl 
 ```
-mistergamedescription>
+$ cat Discworld.mgl 
+<mistergamedescription>
     <rbf>_computer/ao486</rbf>
     <file delay="0" type="s" index="2" path="media/discworld/discworld.vhd"/>
     <file delay="0" type="s" index="4" path="media/discworld/discworld.chd"/>
