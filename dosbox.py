@@ -47,7 +47,6 @@ class DOSBox(object):
         return None
 
     def template(self):
-        self.conf["dosbox"] = { "quit warning": "false" }
         self.conf["dos"] = { "ver": "7.0" }
         self.conf["autoexec"] = {}
 

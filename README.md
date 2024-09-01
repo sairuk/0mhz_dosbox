@@ -7,6 +7,7 @@ dosbox didn't like device indexes for cdroms so the below is true
 - 0 is `a:`
 - 1 is `b:`
 - 2 is `c:`
+- 3 is `d:`
 - 4 is `e:`
 - 5 is `f:`
 - 6 is `g:`
