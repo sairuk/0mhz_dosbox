@@ -7,7 +7,7 @@
 import os, sys
 import argparse
 from dosbox import DOSBox
-from lxml import etree
+import xml.etree.ElementTree as etree
 
 app_name = '0mhz_dosbox'
 
@@ -37,11 +37,10 @@ def main(args):
 
             try:
                 xml = etree.parse(abs_path)
-            except etree.XMLSyntaxError:
+            except etree.ParseError:
                 print(f"Invalid XML: {filename}", file=sys.stderr)
                 next
-
-            elements = xml.getroot().xpath("//file")
+            elements = xml.getroot().findall(".//file")
             dev_dosbox = None
             for element in elements:
                 index = element.attrib["index"]
